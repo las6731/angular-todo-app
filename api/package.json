@@ -1,0 +1,29 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon --watch *.ts --exec ts-node src/index.ts",
+		"tsc": "tsc"
+	},
+	"author": "Lukas Short",
+	"license": "ISC",
+	"dependencies": {
+		"@types/koa": "^2.11.0",
+		"@types/koa-bodyparser": "^4.3.0",
+		"@types/koa-json": "^2.0.18",
+		"@types/koa-logger": "^3.1.1",
+		"@types/koa-router": "^7.4.0",
+		"@types/node": "^13.5.0",
+		"koa": "^2.11.0",
+		"koa-bodyparser": "^4.2.1",
+		"koa-json": "^2.0.2",
+		"koa-logger": "^3.2.1",
+		"koa-router": "^8.0.6",
+		"nodemon": "^2.0.2",
+		"ts-node": "^8.6.2",
+		"typescript": "^3.7.5"
+	}
+}
