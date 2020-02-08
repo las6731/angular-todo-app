@@ -11,7 +11,7 @@ async function resetSchema() {
         CREATE TABLE tasks (
             id                  serial  PRIMARY KEY,
             title               text    NOT NULL,
-            description_html    text    NULL,
+            description_html    text    NOT NULL    DEFAULT '',
             completed           boolean NOT NULL    DEFAULT false,
             list_id             serial  NOT NULL
         );
@@ -19,7 +19,7 @@ async function resetSchema() {
         CREATE TABLE task_lists (
             id                  serial      PRIMARY KEY,
             title               text        NOT NULL,
-            description_html    text        NULL,
+            description_html    text        NOT NULL    DEFAULT '',
             owner_id            text        NOT NULL,
             created_at          timestamptz NOT NULL    DEFAULT NOW(),
             updated_at          timestamptz NOT NULL    DEFAULT NOW()
@@ -29,7 +29,8 @@ async function resetSchema() {
             id      serial  PRIMARY KEY,
             list_id serial  NOT NULL,
             user_id text    NOT NULL,
-            perm    permission  NOT NULL    DEFAULT 'view'
+            perm    permission  NOT NULL    DEFAULT 'view',
+            CONSTRAINT list_user UNIQUE (list_id, user_id)
         );
 
         CREATE TABLE users (
@@ -58,7 +59,7 @@ if (!module.parent) {
 		console.log('Database reset!');
 		process.exit();
 	};
-	const errBack = (err) => {
+	const errBack = (err: any) => {
 		console.error('Caught error while resetting database: ', err, err.stack);
 	};
 

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 export const PORT = parseInt(process.env.PORT!) || 3000;
 export const POSTGRES_USER = process.env.POSTGRES_USER!;
 export const POSTGRES_HOST = process.env.POSTGRES_HOST!;

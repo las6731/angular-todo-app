@@ -10,7 +10,7 @@ export const getTasksInList = async function(list_id: number) {
             `,
 			[ list_id ]
 		)
-		.then((res) => <Task[]>res.rows);
+		.then((res) => res.rows as Task[]);
 };
 
 export const updateTask = async function(task: Task) {
